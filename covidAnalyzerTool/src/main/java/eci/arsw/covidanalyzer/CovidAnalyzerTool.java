@@ -73,7 +73,6 @@ public class CovidAnalyzerTool {
     public static void main(String... args) throws Exception {
 		CovidAnalyzerTool covidAnalyzerTool = new CovidAnalyzerTool();
 		int numberOfThreads = 5;
-		activeThreads.set(numberOfThreads);
 		covidAnalyzerTool.processResultData(numberOfThreads);
 		while (numberOfThreads > 0) {
 			Scanner scanner = new Scanner(System.in); //Punto 2, control de inactividad de hilos 

@@ -5,15 +5,12 @@ public class Result {
 	public String nombre;
 	public ResultType resultType;
 	
-	public Result(String idPerson, String nombre,ResultType resultType) {
+	public Result(String idPerson, String name,ResultType resultType) { 
 		this.id = idPerson;
 		this.resultType = resultType;
+		this.nombre = name;
 	}
-	public String getName() {
-		return nombre;}
-
-	public void setName(String nombre) {
-		this.nombre = nombre;}
+	
 
 	public String getId() {
 		return id;}
@@ -24,8 +21,8 @@ public class Result {
 	public ResultType getResultType() {
 		return resultType;}
 
-	public void setResultType(ResultType Type) {
-		this.resultType = Type;}
+	public void setResultType(ResultType resultType) {
+		this.resultType = resultType;}
 	
 	
 }
