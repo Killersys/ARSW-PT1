@@ -9,23 +9,23 @@ public class Result {
 		this.id = idPerson;
 		this.resultType = resultType;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre=nombre;
-	}
-	public String getIdPerson() {
-		return id;
-	}
-	public void setIdPerson(String idPerson) {
-		this.id = idPerson;
-	}
+	public String getName() {
+		return nombre;}
+
+	public void setName(String nombre) {
+		this.nombre = nombre;}
+
+	public String getId() {
+		return id;}
+
+	public void setId(String id) {
+		this.id = id;}
+
 	public ResultType getResultType() {
-		return resultType;
-	}
-	public void setResultType(ResultType resultType) {
-		this.resultType = resultType;
-	}
+		return resultType;}
+
+	public void setResultType(ResultType Type) {
+		this.resultType = Type;}
+	
 	
 }

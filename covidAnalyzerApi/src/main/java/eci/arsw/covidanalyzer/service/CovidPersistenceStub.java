@@ -25,27 +25,26 @@ public class CovidPersistenceStub implements ICovidAggregateService {
 		array.add(r3);
 		array.add(r4);}
 
-	@Override
 	public boolean aggregateResult(Result result, ResultType type) throws ResultException {
 		for (Result elemento:array){
-			if(elemento.getIdPerson().equals(result.id)){
+			if(elemento.getId().equals(result.id)){
 				throw new ResultException("El usuario ya existe en el sistema");}}
 		array.add(result);
 		return true;}
 
 	@Override
 	public List<Result> getResult(ResultType type) {
-		List<Result> arrayfin=new CopyOnWriteArrayList<>();
-		for (Result elemento:array)	{
+		List<Result> restfin=new CopyOnWriteArrayList<>();
+		for (Result elemento:array){
 			if(elemento.getResultType().equals(type)){
-				arrayfin.add(elemento);}}
-		return arrayfin;	}
+				restfin.add(elemento);}}
+		return restfin;}
 
 	@Override
 	public void upsertPersonWithMultipleTests(String id, ResultType type) {
-		for (Result elemento:array)	{
-			if(elemento.getIdPerson().equals(id)){
-				elemento.setResultType(type);}}}
-
+		for (Result elemento:array){
+			if(elemento.getId().equals(id)){
+				elemento.setResultType(type);}}
+	}
 }
 
