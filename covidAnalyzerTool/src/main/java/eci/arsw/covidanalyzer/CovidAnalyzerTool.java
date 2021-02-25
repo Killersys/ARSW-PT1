@@ -71,15 +71,28 @@ public class CovidAnalyzerTool {
      * A main() so we can easily run these routing rules in our IDE
      */
     public static void main(String... args) throws Exception {
-        CovidAnalyzerTool covidAnalyzerTool = new CovidAnalyzerTool();
-        int numberOfThreads = 5;
+		CovidAnalyzerTool covidAnalyzerTool = new CovidAnalyzerTool();
+		int numberOfThreads = 5;
 		activeThreads.set(numberOfThreads);
 		covidAnalyzerTool.processResultData(numberOfThreads);
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            String line = scanner.nextLine();
-            if (line.contains("exit"))
-                break;
+		while (numberOfThreads > 0) {
+			Scanner scanner = new Scanner(System.in); //Punto 2, control de inactividad de hilos 
+			String line = scanner.nextLine();
+			if (pause) {
+				pause = false;
+				System.out.println("Running");
+				pausedThreads.set(10);
+				synchronized (monitor) {
+					monitor.notifyAll();}} 
+			else {
+				System.out.println("paused");
+				pause = true;
+				while (activeThreads.get() != pausedThreads.get()) {
+					Thread.sleep(0,01);}
+				System.out.println("Found " + covidAnalyzerTool.getPositivePeople().size() + " positive peopel");
+			}
+			if (line.contains("exit"))
+				break;
             String message = "Processed %d out of %d files.\nFound %d positive people:\n%s";
             Set<Result> positivePeople = covidAnalyzerTool.getPositivePeople();
             String affectedPeople = positivePeople.stream().map(Result::toString).reduce("", (s1, s2) -> s1 + "\n" + s2);
