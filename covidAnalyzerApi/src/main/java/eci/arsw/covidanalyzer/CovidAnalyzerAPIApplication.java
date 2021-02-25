@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CovidAnalyzerAPIApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CovidAnalyzerAPIApplication.class, args);
+        SpringApplication.run(CovidAnalyzerAPIApplication.class, args);        
     }
 
 }
